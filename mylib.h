@@ -5,7 +5,7 @@
 /* Start of preamble from import "C" comments.  */
 
 
-#line 3 "/home/post/goprojects/src/github.com/postatum/playgo/printer/mylib.go"
+#line 3 "/home/post/goprojects/src/github.com/postatum/golibsplay/mylib.go"
 
 typedef struct { long long x; long long y; } Coords;
 
@@ -64,9 +64,11 @@ extern void PrintInt(GoInt p0);
 
 extern void PrintCStr(char* p0);
 
-extern void PrintMap(GoMap p0);
-
 extern void PrintStruct(Coords p0);
+
+extern void PrintStructFancy(Coords recv);
+
+extern void PrintMap(GoMap p0);
 
 #ifdef __cplusplus
 }

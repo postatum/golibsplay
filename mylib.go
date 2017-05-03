@@ -21,14 +21,19 @@ func PrintCStr(s *C.char) {
     fmt.Println(C.GoString(s))
 }
 
-//export PrintMap
-func PrintMap(m map[int]int) {
-    fmt.Println(m)
-}
-
 //export PrintStruct
 func PrintStruct(c C.Coords) {
     fmt.Println(c)
+}
+
+//export PrintStructFancy
+func (c C.Coords) PrintStructFancy() {
+    fmt.Println(c)
+}
+
+//export PrintMap
+func PrintMap(m map[int]int) {
+    fmt.Println(m)
 }
 
 func main() {}
