@@ -66,7 +66,7 @@ extern void PrintCStr(char* p0);
 
 extern void PrintStruct(Coords p0);
 
-extern void PrintStructFancy(Coords recv);
+extern void PrintStructMeth(Coords recv);
 
 extern void PrintMap(GoMap p0);
 

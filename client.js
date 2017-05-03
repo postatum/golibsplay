@@ -17,6 +17,7 @@ var lib = ffi.Library("./mylib.so", {
   PrintInt: ["longlong", ["longlong"]],
   PrintCStr: ["longlong", ["string"]],
   PrintStruct: ["longlong", [Coords]],
+  PrintStructMeth: ["longlong", [Coords]],
   // PrintMap: ["longlong", ["void"]],
 });
 
@@ -31,5 +32,5 @@ var coords = new Coords();
 coords["x"] = 1
 coords["y"] = 2
 lib.PrintStruct(coords);
-lib.PrintStructFancy(coords);
+lib.PrintStructMeth(coords);
 // lib.PrintMap({1: 2, 3: 4})

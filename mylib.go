@@ -26,8 +26,8 @@ func PrintStruct(c C.Coords) {
     fmt.Println(c)
 }
 
-//export PrintStructFancy
-func (c C.Coords) PrintStructFancy() {
+//export PrintStructMeth
+func (c C.Coords) PrintStructMeth() {
     fmt.Println(c)
 }
 
