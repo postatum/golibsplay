@@ -5,7 +5,7 @@
 /* Start of preamble from import "C" comments.  */
 
 
-#line 3 "/home/post/goprojects/src/github.com/postatum/golibsplay/mylib.go"
+#line 8 "/home/post/goprojects/src/github.com/postatum/golibsplay/mylib.go"
 
 typedef struct { long long x; long long y; } Coords;
 

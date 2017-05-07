@@ -1,3 +1,8 @@
+/*
+    For building into c-shared lib
+    > go build -o mylib.so -buildmode=c-shared mylib.go
+*/
+
 package main
 
 /*
@@ -31,9 +36,11 @@ func (c C.Coords) PrintStructMeth() {
     fmt.Println(c)
 }
 
+func main() {}
+
+// v-- Not used by C yet --v
+
 //export PrintMap
 func PrintMap(m map[int]int) {
     fmt.Println(m)
 }
-
-func main() {}
