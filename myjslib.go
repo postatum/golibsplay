@@ -5,7 +5,10 @@
 
 package main
 
-import "github.com/gopherjs/gopherjs/js"
+import (
+    "github.com/gopherjs/gopherjs/js"
+    "github.com/postatum/golibsplay/core"
+)
 
 type Vertex struct {
     A, B int
@@ -27,6 +30,10 @@ func GetLen(s string) int {
     return len(s)
 }
 
+func PrintGoStr (s string) {
+    core.PrintStr(s)
+}
+
 func main() {
     js.Module.Set("exports", map[string]interface{}{ // node
     // js.Global.Set("mylib", map[string]interface{}{ // browser
@@ -34,5 +41,6 @@ func main() {
         "ReturnInt": ReturnInt,
         "ReturnMap": ReturnMap,
         "GetLen": GetLen,
+        "PrintGoStr": PrintGoStr,
     })
 }

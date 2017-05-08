@@ -9,11 +9,14 @@ package main
 typedef struct { long long x; long long y; } Coords;
 */
 import "C"
-import "fmt"
+import (
+    "fmt"
+    "github.com/postatum/golibsplay/core"
+)
 
 //export PrintGoStr
-func PrintGoStr(s string) {
-    fmt.Println(s)
+func PrintGoStr (s string) {
+    core.PrintStr(s)
 }
 
 //export PrintInt
