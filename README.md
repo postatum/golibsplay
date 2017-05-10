@@ -34,7 +34,7 @@ $ node index.js
 
 ### Node (SWIG)
 ```sh
-$ swig -outdir demos/node-swig/ -javascript mylib.i
+$ swig -outdir demos/node-swig/ -javascript -node mylib.i
 $ cd demos/node-swig/
 $ node
 > (...)
