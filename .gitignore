@@ -1,1 +1,8 @@
-node_modules
+mylib.h
+mylib.i
+mylib.so
+mylib.so.dylib
+demos/browser/myjslib.js*
+demos/node-gopherjs/myjslib.js*
+demos/java/*.java
+demos/node/node_modules/

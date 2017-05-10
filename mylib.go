@@ -1,8 +1,3 @@
-/*
-    For building into c-shared lib
-    > go build -o mylib.so -buildmode=c-shared mylib.go
-*/
-
 package main
 
 /*
@@ -10,33 +5,33 @@ typedef struct { long long x; long long y; } Coords;
 */
 import "C"
 import (
-    "fmt"
-    "github.com/postatum/golibsplay/core"
+	"fmt"
+	"github.com/jstoiko/golibsplay/core"
 )
 
 //export PrintGoStr
-func PrintGoStr (s string) {
-    core.PrintStr(s)
+func PrintGoStr(s string) {
+	core.PrintStr(s)
 }
 
 //export PrintInt
 func PrintInt(s int) {
-    fmt.Println(s)
+	fmt.Println(s)
 }
 
 //export PrintCStr
 func PrintCStr(s *C.char) {
-    fmt.Println(C.GoString(s))
+	fmt.Println(C.GoString(s))
 }
 
 //export PrintStruct
 func PrintStruct(c C.Coords) {
-    fmt.Println(c)
+	fmt.Println(c)
 }
 
 //export PrintStructMeth
 func (c C.Coords) PrintStructMeth() {
-    fmt.Println(c)
+	fmt.Println(c)
 }
 
 func main() {}
@@ -45,5 +40,5 @@ func main() {}
 
 //export PrintMap
 func PrintMap(m map[int]int) {
-    fmt.Println(m)
+	fmt.Println(m)
 }
