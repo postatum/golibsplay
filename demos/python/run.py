@@ -14,10 +14,14 @@ class Coords(ctypes.Structure):
 
 msg = GoString("Hello Python!", 13)
 
-lib.PrintGoStr(msg)
-lib.PrintInt(123)
-lib.PrintCStr("Hello C!")
-lib.PrintStruct(Coords(1, 2))
-print lib.GetFirstJSONElement("../testdata.json")
+# lib.PrintGoStr(msg)
+# lib.PrintInt(123)
+# lib.PrintCStr("Hello C!")
+# lib.PrintStruct(Coords(1, 2))
 # lib.PrintStructMeth(Coords(3, 4))
 # lib.PrintMap({1: 2, 3: 4})
+
+file = os.path.abspath(os.path.join(
+    os.path.dirname(os.path.realpath(__file__)),
+    "../testdata.json"))
+print lib.GetFirstJSONElement(file)
