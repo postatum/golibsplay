@@ -19,6 +19,7 @@ var lib = ffi.Library("../../mylib.so", {
   PrintStruct: ["longlong", [Coords]],
   PrintStructMeth: ["longlong", [Coords]],
   // PrintMap: ["longlong", ["void"]],
+  GetFirstJSONElement: ["longlong", ["string"]],
 });
 
 var str = new GoString();
@@ -34,3 +35,4 @@ coords["y"] = 2
 lib.PrintStruct(coords);
 lib.PrintStructMeth(coords);
 // lib.PrintMap({1: 2, 3: 4})
+lib.GetFirstJSONElement("../testdata.json")

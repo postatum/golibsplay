@@ -1,15 +1,7 @@
 ## Build stuff
 
-### C shared library
-
 ```sh
-$ go build -o mylib.so -buildmode=c-shared mylib.go
-```
-
-### JS library
-```sh
-$ go get -u github.com/gopherjs/gopherjs
-$ gopherjs build myjslib.go
+$ make
 ```
 
 ## Demo examples
@@ -21,42 +13,23 @@ $ cd demos/python/
 $ python run.py
 ```
 
-### Node (GopherJS)
+### Node
 ```sh
-$ gopherjs build myjslib.go
-$ mv myjslib.js* demos/node-gopherjs/
-$ cd demos/node-gopherjs/
-$ node
-> var lib = require('./myjslib.js')
-> lib.PrintGoStr('hello')
-```
-
-### Node (Shared library)
-```sh
-$ cp mylib.so mylib.so.dylib # OSX hack for node-ffi
 $ cd demos/node/
 $ npm install
 $ node index.js
 ```
 
-### Node (SWIG)
-```sh
-$ swig -outdir demos/node-swig/ -javascript -node mylib.i
-$ cd demos/node-swig/
-$ node
-> (...)
-```
-
 ### Browser (GopherJS)
 ```sh
-$ gopherjs build myjslib.go # edit myjslib.go first
-$ mv myjslib.js* demos/browser/
+$ make browser-example
 $ open demos/browser/index.html
 ```
 
-### Java (SWIG)
+### Node (GopherJS)
 ```sh
-$ swig -outdir demos/java/ -java mylib.i
-$ (...) # compile JAR
-$ java -jar (...) # run JAR
+$ make browser-example # edit myjslib.go first
+$ node
+> var lib = require('./myjslib.js')
+> lib.PrintGoStr('hello')
 ```

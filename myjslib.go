@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-	"github.com/postatum/golibsplay/core"
+	"github.com/jstoiko/golibsplay/core"
 )
 
 type Vertex struct {
@@ -30,8 +30,8 @@ func PrintGoStr(s string) {
 }
 
 func main() {
-	js.Module.Set("exports", map[string]interface{}{ // node
-		// js.Global.Set("mylib", map[string]interface{}{ // browser
+	// js.Module.Set("exports", map[string]interface{}{ // node
+	js.Global.Set("mylib", map[string]interface{}{ // browser
 		"ReturnGoStr": ReturnGoStr,
 		"ReturnInt":   ReturnInt,
 		"ReturnMap":   ReturnMap,

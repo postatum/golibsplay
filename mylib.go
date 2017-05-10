@@ -6,7 +6,7 @@ typedef struct { long long x; long long y; } Coords;
 import "C"
 import (
 	"fmt"
-	"github.com/postatum/golibsplay/core"
+	"github.com/jstoiko/golibsplay/core"
 	"path/filepath"
 )
 

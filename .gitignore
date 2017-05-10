@@ -2,8 +2,12 @@ mylib.h
 mylib.i
 mylib.so
 mylib.so.dylib
-mylib_wrap.c
+
 demos/browser/myjslib.js*
-demos/node-gopherjs/myjslib.js*
-demos/java/*.java
 demos/node/node_modules/
+
+demos/node-gopherjs/
+
+# SWIG
+mylib_wrap.c
+demos/swig/
