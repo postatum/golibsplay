@@ -12,7 +12,7 @@ var Coords = Struct({
   y: "longlong"
 });
 
-var lib = ffi.Library("./mylib.so", {
+var lib = ffi.Library("../../mylib.so", {
   PrintGoStr: ["longlong", [GoString]],
   PrintInt: ["longlong", ["longlong"]],
   PrintCStr: ["longlong", ["string"]],

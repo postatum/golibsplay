@@ -1,8 +1,7 @@
-from ctypes import *
+import ctypes
+import os
 
-lib = cdll.LoadLibrary("./mylib.so")
-# lib = ctypes.CDLL("mylib.so")
-
+lib = ctypes.CDLL(os.path.abspath("./mylib.so"))
 
 class GoString(Structure):
     _fields_ = [("p", c_char_p), ("n", c_longlong)]
