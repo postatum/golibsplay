@@ -6,7 +6,7 @@ typedef struct { long long x; long long y; } Coords;
 import "C"
 import (
 	"fmt"
-	"github.com/jstoiko/golibsplay/core"
+	"github.com/postatum/golibsplay/core"
 )
 
 //export PrintGoStr
