@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-	"github.com/jstoiko/golibsplay/core"
+	"github.com/postatum/golibsplay/core"
 )
 
 type Vertex struct {

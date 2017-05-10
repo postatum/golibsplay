@@ -6,7 +6,8 @@ typedef struct { long long x; long long y; } Coords;
 import "C"
 import (
 	"fmt"
-	"github.com/jstoiko/golibsplay/core"
+	"github.com/postatum/golibsplay/core"
+	"path/filepath"
 )
 
 //export PrintGoStr
@@ -32,6 +33,15 @@ func PrintStruct(c C.Coords) {
 //export PrintStructMeth
 func (c C.Coords) PrintStructMeth() {
 	fmt.Println(c)
+}
+
+//export GetFirstJSONElement
+func GetFirstJSONElement(p *C.char) string {
+	path, err := filepath.Abs(C.GoString(p))
+	if err != nil {
+		return string(core.DumpError(err))
+	}
+	return core.GetFirstElement(path)
 }
 
 func main() {}

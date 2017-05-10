@@ -14,6 +14,13 @@ $ gopherjs build myjslib.go
 
 ## Demo examples
 
+### Python
+```sh
+$ cp mylib.so demos/python/
+$ cd demos/python/
+$ python run.py
+```
+
 ### Node (GopherJS)
 ```sh
 $ gopherjs build myjslib.go
