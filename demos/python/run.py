@@ -24,5 +24,5 @@ lib.PrintStructMeth(Coords(3, 4))
 file = os.path.abspath(os.path.join(
     os.path.dirname(os.path.realpath(__file__)),
     "../testdata.json"))
-print file
+
 print lib.GetFirstJSONElement(file)
