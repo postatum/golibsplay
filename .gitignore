@@ -7,6 +7,7 @@ demos/browser/myjslib.js*
 demos/node/node_modules/
 
 demos/node-gopherjs/
+demos/java/target
 
 # SWIG
 mylib_wrap.c

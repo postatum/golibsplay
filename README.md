@@ -33,3 +33,11 @@ $ node
 > var lib = require('./myjslib.js')
 > lib.PrintGoStr('hello')
 ```
+
+### Java
+```sh
+cp mylib.so demos/java/
+cd demos/java/
+mvn install
+java -cp target/classes:target/dependency/* javatogo.JavaToGo
+```
