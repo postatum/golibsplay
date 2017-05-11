@@ -19,7 +19,7 @@ var lib = ffi.Library("../../mylib.so", {
   PrintStruct: ["longlong", [Coords]],
   PrintStructMeth: ["longlong", [Coords]],
   // PrintMap: ["longlong", ["void"]],
-  GetFirstJSONElement: ["longlong", ["string"]],
+  GetFirstJSONElement: ["string", ["string"]],
 });
 
 var str = new GoString();

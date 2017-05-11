@@ -25,4 +25,7 @@ file = os.path.abspath(os.path.join(
     os.path.dirname(os.path.realpath(__file__)),
     "../testdata.json"))
 
+# https://docs.python.org/3/library/ctypes.html#return-types
+lib.GetFirstJSONElement.restype = ctypes.c_char_p
+
 print lib.GetFirstJSONElement(file)
