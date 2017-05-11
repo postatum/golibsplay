@@ -36,12 +36,12 @@ func (c C.Coords) PrintStructMeth() {
 }
 
 //export GetFirstJSONElement
-func GetFirstJSONElement(p *C.char) string {
+func GetFirstJSONElement(p *C.char) *C.char {
 	path, err := filepath.Abs(C.GoString(p))
 	if err != nil {
-		return string(core.DumpError(err))
+		return C.CString(string(core.DumpError(err)))
 	}
-	return core.GetFirstElement(path)
+	return C.CString(core.GetFirstElement(path))
 }
 
 func main() {}
