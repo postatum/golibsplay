@@ -35,12 +35,24 @@ func DumpError(e error) []byte {
 	return res
 }
 
-func GetFirstElement(path string) string {
-	dat, err := ParseJSONFile(path)
+func GetFirstFileElement(path string) string {
+	parsed, err := ParseJSONFile(path)
 	if err != nil {
-		return dat.(string)
+		return parsed.(string)
 	}
-	arrDat := dat.([]interface{})
+	return getFirstCommon(parsed)
+}
+
+func GetFirstContentElement(content []byte) string {
+	parsed, err := ParseJSON(content)
+	if err != nil {
+		return parsed.(string)
+	}
+	return getFirstCommon(parsed)
+}
+
+func getFirstCommon(data interface{}) string {
+	arrDat := data.([]interface{})
 	res, err := json.Marshal(arrDat[0])
 	if err != nil {
 		return string(DumpError(err))

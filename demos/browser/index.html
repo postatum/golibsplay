@@ -1,6 +1,14 @@
 <html>
   <head>
     <script src="./myjslib.js"></script>
+    <script type="text/javascript">
+        var data = JSON.stringify([
+            {"foo": 1, "data": [2, 3, 4]},
+            {"bar": 2, "data": [3, 4, 5]},
+            {"baz": 3, "data": [4, 5, 6]}
+        ])
+        console.log(mylib.GetFirstJSONElement(data))
+    </script>
   </head>
   <body></body>
 </html>

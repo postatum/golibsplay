@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-	"github.com/jstoiko/golibsplay/core"
+	"github.com/postatum/golibsplay/core"
 )
 
 type Vertex struct {
@@ -29,13 +29,19 @@ func PrintGoStr(s string) {
 	core.PrintStr(s)
 }
 
+func GetFirstJSONElement(c string) string {
+	content := []byte(c)
+	return core.GetFirstContentElement(content)
+}
+
 func main() {
 	// js.Module.Set("exports", map[string]interface{}{ // node
 	js.Global.Set("mylib", map[string]interface{}{ // browser
-		"ReturnGoStr": ReturnGoStr,
-		"ReturnInt":   ReturnInt,
-		"ReturnMap":   ReturnMap,
-		"GetLen":      GetLen,
-		"PrintGoStr":  PrintGoStr,
+		"ReturnGoStr":         ReturnGoStr,
+		"ReturnInt":           ReturnInt,
+		"ReturnMap":           ReturnMap,
+		"GetLen":              GetLen,
+		"PrintGoStr":          PrintGoStr,
+		"GetFirstJSONElement": GetFirstJSONElement,
 	})
 }

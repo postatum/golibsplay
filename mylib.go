@@ -41,7 +41,7 @@ func GetFirstJSONElement(p *C.char) *C.char {
 	if err != nil {
 		return C.CString(string(core.DumpError(err)))
 	}
-	return C.CString(core.GetFirstElement(path))
+	return C.CString(core.GetFirstFileElement(path))
 }
 
 func main() {}
