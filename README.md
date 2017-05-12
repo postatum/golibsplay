@@ -44,7 +44,7 @@ java -cp target/classes:target/dependency/* javatogo.JavaToGo
 
 ### CLI
 ```sh
-go get github.com/codegangsta/cli
+go get github.com/urfave/cli
 cd mycli
 go install
 cd ../demos

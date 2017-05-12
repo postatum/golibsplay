@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 	"github.com/postatum/golibsplay/core"
 	"path/filepath"
 )
