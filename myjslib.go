@@ -31,7 +31,11 @@ func PrintGoStr(s string) {
 
 func GetFirstJSONElement(c string) string {
 	content := []byte(c)
-	return core.GetFirstContentElement(content)
+	el, err := core.GetFirstContentElement(content)
+	if err != nil {
+		return core.DumpError(err)
+	}
+	return el
 }
 
 func main() {

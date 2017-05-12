@@ -13,7 +13,7 @@ func PrintStr(s string) {
 func ParseJSONFile(path string) (interface{}, error) {
 	dat, err := ioutil.ReadFile(path)
 	if err != nil {
-		return WrapError(err), err
+		return nil, err
 	}
 	return ParseJSON(dat)
 }
@@ -21,7 +21,7 @@ func ParseJSONFile(path string) (interface{}, error) {
 func ParseJSON(dat []byte) (interface{}, error) {
 	parsed := []interface{}{}
 	if err := json.Unmarshal(dat, &parsed); err != nil {
-		return WrapError(err), err
+		return nil, err
 	}
 	return parsed, nil
 }
@@ -30,32 +30,32 @@ func WrapError(e error) map[string]string {
 	return map[string]string{"error": e.Error()}
 }
 
-func DumpError(e error) []byte {
+func DumpError(e error) string {
 	res, _ := json.Marshal(WrapError(e))
-	return res
+	return string(res)
 }
 
-func GetFirstFileElement(path string) string {
+func GetFirstFileElement(path string) (string, error) {
 	parsed, err := ParseJSONFile(path)
 	if err != nil {
-		return parsed.(string)
+		return "", err
 	}
 	return getFirstCommon(parsed)
 }
 
-func GetFirstContentElement(content []byte) string {
+func GetFirstContentElement(content []byte) (string, error) {
 	parsed, err := ParseJSON(content)
 	if err != nil {
-		return parsed.(string)
+		return "", err
 	}
 	return getFirstCommon(parsed)
 }
 
-func getFirstCommon(data interface{}) string {
+func getFirstCommon(data interface{}) (string, error) {
 	arrDat := data.([]interface{})
 	res, err := json.Marshal(arrDat[0])
 	if err != nil {
-		return string(DumpError(err))
+		return "", err
 	}
-	return string(res)
+	return string(res), nil
 }

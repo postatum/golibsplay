@@ -39,9 +39,13 @@ func (c C.Coords) PrintStructMeth() {
 func GetFirstJSONElement(p *C.char) *C.char {
 	path, err := filepath.Abs(C.GoString(p))
 	if err != nil {
-		return C.CString(string(core.DumpError(err)))
+		return C.CString(core.DumpError(err))
 	}
-	return C.CString(core.GetFirstFileElement(path))
+	el, err := core.GetFirstFileElement(path)
+	if err != nil {
+		return C.CString(core.DumpError(err))
+	}
+	return C.CString(el)
 }
 
 func main() {}

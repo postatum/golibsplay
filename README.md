@@ -41,3 +41,12 @@ cd demos/java/
 mvn install
 java -cp target/classes:target/dependency/* javatogo.JavaToGo
 ```
+
+### CLI
+```sh
+go get github.com/codegangsta/cli
+cd mycli
+go install
+cd ../demos
+mycli jsonfirst ./testdata.json
+```
