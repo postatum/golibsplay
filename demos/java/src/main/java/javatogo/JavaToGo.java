@@ -25,13 +25,23 @@ public class JavaToGo {
   }
 
   public interface MyLib extends Library {
+    long PrintGoStr(String x);
     long PrintInt(long x);
     long PrintCStr(String x);
+    long PrintStruct(String x);
+    long PrintStructMeth(String x);
+    String GetFirstJSONElement(String x);
   }
 
   public static void main(String[] args) {
-    System.out.println("Java says: about to call Go ..");
-    MY_LIB.PrintCStr("Hi to C from Java");
     MY_LIB.PrintInt(42);
+    MY_LIB.PrintCStr("Hi to C from Java");
+    String pth = System.getProperty("user.dir") + "/../testdata.json";
+    System.out.println(MY_LIB.GetFirstJSONElement(pth));
+
+    // These aren't working properly
+    MY_LIB.PrintStruct("42");
+    MY_LIB.PrintStructMeth("42");
+    MY_LIB.PrintGoStr("Hi to Go from Java");
   }
 }
