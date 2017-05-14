@@ -9,18 +9,8 @@ import com.sun.jna.Platform;
 public class JavaToGo {
   static MyLib MY_LIB;
   static {
-    String os = System.getProperty("os.name").toLowerCase();
-    String libExtension;
-    if (os.contains("mac os")) {
-      libExtension = "dylib";
-    } else if (os.contains("windows")) {
-      libExtension = "dll";
-    } else {
-      libExtension = "so";
-    }
-
     String pwd = System.getProperty("user.dir");
-    String lib = pwd + "/mylib." + libExtension;
+    String lib = pwd + "/mylib.so";
     MY_LIB = (MyLib) Native.loadLibrary(lib, MyLib.class);
   }
 

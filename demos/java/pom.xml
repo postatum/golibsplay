@@ -6,7 +6,7 @@
   </properties>
 
 
-  <groupId>com.github.postatum</groupId>
+  <groupId>com.github.jstoiko</groupId>
   <artifactId>java_to_go</artifactId>
   <name>java_to_go</name>
   <version>0.1</version>

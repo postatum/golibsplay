@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/urfave/cli"
-	"github.com/postatum/golibsplay/core"
+	"github.com/jstoiko/golibsplay/core"
 	"path/filepath"
 )
 
