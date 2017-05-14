@@ -47,6 +47,5 @@ java -cp target/classes:target/dependency/* javatogo.JavaToGo
 go get github.com/urfave/cli
 cd mycli
 go install
-cd ../demos
-mycli jsonfirst ./testdata.json
+mycli jsonfirst ../demos/testdata.json
 ```
