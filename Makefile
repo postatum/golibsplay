@@ -14,4 +14,4 @@ node-gopherjs-example:
 	mv myjslib.js* demos/node-gopherjs/
 
 clean:
-	rm -f mylib.h
+	rm -f mylib.h mylib.so
