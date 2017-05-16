@@ -17,7 +17,7 @@ public class JavaToGo {
   }
 
   public interface MyLib extends Library {
-    long PrintGoStr(GoString x);
+    long PrintGoStr(GoString.ByValue x);
     long PrintInt(long x);
     long PrintCStr(String x);
     long PrintStruct(String x);
@@ -25,11 +25,11 @@ public class JavaToGo {
     String GetFirstJSONElement(String x);
   }
 
-  // public static class GoString extends Structure implements Structure.ByReference {
   public static class GoString extends Structure {
+    public static class ByValue extends GoString implements Structure.ByValue {}
     public String p;
     public long n;
-    protected List<String> getFieldOrder() {
+    protected List getFieldOrder() {
         return Arrays.asList(new String[] { "p", "n" });
     }
   }
@@ -42,7 +42,7 @@ public class JavaToGo {
     System.out.println(MY_LIB.GetFirstJSONElement(pth));
 
     // These aren't working properly
-    GoString gs = new GoString();
+    GoString.ByValue gs = new GoString.ByValue();
     gs.p = "Hello Java!";
     gs.n = 11;
     System.out.println("== PrintGoStr() begin ==");
