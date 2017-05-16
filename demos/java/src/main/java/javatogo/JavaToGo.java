@@ -1,6 +1,5 @@
 package javatogo;
 
-import java.io.File;
 import java.util.List;
 import java.util.Arrays;
 
@@ -9,38 +8,17 @@ import com.sun.jna.Native;
 import com.sun.jna.Platform;
 import com.sun.jna.Structure;
 
-class GoString extends Structure {
-  public String p;
-  public long n;
-  protected List<String> getFieldOrder() {
-      return Arrays.asList(new String[] { "p", "n" });
-  }
-  public GoString(String x, long y) {
-    p = x;
-    n = y;
-  }
-}
 
 public class JavaToGo {
   static MyLib MY_LIB;
   static {
-    String os = System.getProperty("os.name").toLowerCase();
-    String libExtension;
-    if (os.contains("mac os")) {
-      libExtension = "dylib";
-    } else if (os.contains("windows")) {
-      libExtension = "dll";
-    } else {
-      libExtension = "so";
-    }
-
     String pwd = System.getProperty("user.dir");
-    String lib = pwd + "/mylib." + libExtension;
+    String lib = pwd + "/mylib.so";
     MY_LIB = (MyLib) Native.loadLibrary(lib, MyLib.class);
   }
 
   public interface MyLib extends Library {
-    long PrintGoStr(GoString x);
+    long PrintGoStr(GoString.ByValue x);
     long PrintInt(long x);
     long PrintCStr(String x);
     long PrintStruct(String x);
@@ -48,16 +26,34 @@ public class JavaToGo {
     String GetFirstJSONElement(String x);
   }
 
+  public static class GoString extends Structure {
+    public static class ByValue extends GoString implements Structure.ByValue {}
+    public String p;
+    public long n;
+    protected List getFieldOrder() {
+        return Arrays.asList(new String[] { "p", "n" });
+    }
+  }
+
   public static void main(String[] args) {
+    System.out.println("\nPrintInt() will run now:");
     MY_LIB.PrintInt(42);
+
+    System.out.println("\nPrintCStr() will run now:");
     MY_LIB.PrintCStr("Hi to C from Java");
+
+    System.out.println("\nGetFirstJSONElement() will run now:");
     String pth = System.getProperty("user.dir") + "/../testdata.json";
     System.out.println(MY_LIB.GetFirstJSONElement(pth));
 
-    // These aren't working properly
-    GoString gs = new GoString("hi", 2L);
+    System.out.println("\nPrintGoStr() will run now:");
+    GoString.ByValue gs = new GoString.ByValue();
+    gs.p = "Hello Java!";
+    gs.n = 11;
     MY_LIB.PrintGoStr(gs);
-    MY_LIB.PrintStruct("42");
-    MY_LIB.PrintStructMeth("42");
+
+    // These aren't working properly
+    // MY_LIB.PrintStruct("42");
+    // MY_LIB.PrintStructMeth("42");
   }
 }

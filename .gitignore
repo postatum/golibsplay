@@ -1,5 +1,6 @@
 mylib.h
 mylib.i
+mylib.c
 mylib.so
 mylib.so.dylib
 
