@@ -59,3 +59,24 @@ func getFirstCommon(data interface{}) (string, error) {
 	}
 	return string(res), nil
 }
+
+func GetLexicalInfo(path string) (string, error) {
+	jsonb, err := ioutil.ReadFile(path)
+	if err != nil {
+		return "", err
+	}
+	jsons := string(jsonb)
+    lf := rune(0x0A)
+    line := 1
+    var character int
+
+    for _, b := range jsons {
+        if b == lf {
+            line++
+            character = 0
+        }
+        character++
+        fmt.Printf("%d - %d - %s\n", line, character, string(b))
+    }
+    return "", nil
+}

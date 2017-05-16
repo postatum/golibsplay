@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/urfave/cli"
-	"github.com/jstoiko/golibsplay/core"
+	"github.com/postatum/golibsplay/core"
 	"path/filepath"
 )
 
@@ -27,6 +27,24 @@ var Commands = []cli.Command{
 				return nil
 			}
 			fmt.Println(el)
+			return nil
+		},
+	},
+	{
+		Name:  "lexicalinfo",
+		Usage: "get first json element",
+		Action: func(c *cli.Context) error {
+			path, err := filepath.Abs(c.Args().First())
+			if err != nil {
+				fmt.Println(err.Error())
+				return nil
+			}
+			data, err := core.GetLexicalInfo(path)
+			if err != nil {
+				fmt.Println(err.Error())
+				return nil
+			}
+			fmt.Println(data)
 			return nil
 		},
 	},
