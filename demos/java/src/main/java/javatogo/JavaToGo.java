@@ -1,10 +1,12 @@
 package javatogo;
 
-import java.io.File;
+import java.util.List;
+import java.util.Arrays;
 
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.Platform;
+import com.sun.jna.Structure;
 
 public class JavaToGo {
   static MyLib MY_LIB;
@@ -15,13 +17,23 @@ public class JavaToGo {
   }
 
   public interface MyLib extends Library {
-    long PrintGoStr(String x);
+    long PrintGoStr(GoString x);
     long PrintInt(long x);
     long PrintCStr(String x);
     long PrintStruct(String x);
     long PrintStructMeth(String x);
     String GetFirstJSONElement(String x);
   }
+
+  // public static class GoString extends Structure implements Structure.ByReference {
+  public static class GoString extends Structure {
+    public String p;
+    public long n;
+    protected List<String> getFieldOrder() {
+        return Arrays.asList(new String[] { "p", "n" });
+    }
+  }
+
 
   public static void main(String[] args) {
     MY_LIB.PrintInt(42);
@@ -30,8 +42,13 @@ public class JavaToGo {
     System.out.println(MY_LIB.GetFirstJSONElement(pth));
 
     // These aren't working properly
-    MY_LIB.PrintStruct("42");
-    MY_LIB.PrintStructMeth("42");
-    MY_LIB.PrintGoStr("Hi to Go from Java");
+    GoString gs = new GoString();
+    gs.p = "Hello Java!";
+    gs.n = 11;
+    System.out.println("== PrintGoStr() begin ==");
+    MY_LIB.PrintGoStr(gs);
+    System.out.println("== PrintGoStr() end ==");
+    // MY_LIB.PrintStruct("42");
+    // MY_LIB.PrintStructMeth("42");
   }
 }
